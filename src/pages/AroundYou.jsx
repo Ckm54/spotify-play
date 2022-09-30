@@ -8,7 +8,7 @@ import { useGetSongsBycountryQuery } from '../redux/services/shazamCore';
 const AroundYou = () => {
   const [country, setCountry] = useState('');
   const [loading, setLoading] = useState(true);
-  const { isPlaying } = useSelector((state) => state.player);
+  const { activeSong, isPlaying } = useSelector((state) => state.player);
   const { data, isFetching, error } = useGetSongsBycountryQuery('EG');
 
   useEffect(() => {
@@ -33,6 +33,7 @@ const AroundYou = () => {
             key={song.key}
             song={song}
             isPlaying={isPlaying}
+            activeSong={activeSong}
             data={data}
             i={i}
           />
